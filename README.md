@@ -4,7 +4,7 @@ Go implementation of [Robert Sedgewick][rs] and [Kevin Wayne][kw]'s Java algorit
 
 # Acknowledgements
 
-This work is based and extends [Li Hao][lh]'s original port
+This work is based on and extends [Li Hao][lh]'s original port
 
 [rs]:	  https://www.cs.princeton.edu/people/profile/rs
 [kw]:	  https://www.cs.princeton.edu/people/profile/wayne
