@@ -1,15 +1,12 @@
-package algorithms
+package structures
 
-import (
-	"../structures"
-)
 
 // Bag implements a bag data type by structures
 type Bag struct {
-	*structures.LinkList
+	*LinkList
 }
 
 // NewBag ...
 func NewBag() *Bag {
-	return &Bag{structures.NewLinkList()}
+	return &Bag{NewLinkList()}
 }
