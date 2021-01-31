@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 // HashKey ...
 type HashKey interface {
 	hash() int
@@ -139,7 +141,7 @@ func (st SeparateChainHashST) IsEmpty() bool {
 
 // Keys ...
 func (st *SeparateChainHashST) Keys() []interface{} {
-	queue := NewQueue()
+	queue := structures.NewQueue()
 
 	for i := 0; i < st.m; i++ {
 

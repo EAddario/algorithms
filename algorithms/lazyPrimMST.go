@@ -1,9 +1,11 @@
 package algorithms
 
+import "../structures"
+
 // LazyPrimMST ...
 type LazyPrimMST struct {
 	marked []bool
-	mst    *Queue
+	mst    *structures.Queue
 	pq     *MinPQ
 	weight float32
 }
@@ -12,7 +14,7 @@ type LazyPrimMST struct {
 func NewLazyPrimMST(g *EdgeWeightedGraph) *LazyPrimMST {
 	marked := make([]bool, g.V())
 	pq := NewMinPQ()
-	mst := NewQueue()
+	mst := structures.NewQueue()
 	l := &LazyPrimMST{marked, mst, pq, 0}
 
 	for v := 0; v < g.V(); v++ {

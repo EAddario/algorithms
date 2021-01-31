@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 // LinearProbingHashST is symbol table
 type LinearProbingHashST struct {
 	n    int       // size of key value pairs
@@ -151,7 +153,7 @@ func (st LinearProbingHashST) IsEmpty() bool {
 
 // Keys ...
 func (st *LinearProbingHashST) Keys() []interface{} {
-	queue := NewQueue()
+	queue := structures.NewQueue()
 
 	for i := 0; i < st.m; i++ {
 

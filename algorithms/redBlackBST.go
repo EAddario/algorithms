@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 const (
 	red   = true
 	black = false
@@ -386,7 +388,7 @@ func (st *RedBlackBST) Keys() []Key {
 }
 
 func (st *RedBlackBST) keys(lo, hi Key) (keys []Key) {
-	queue := NewQueue()
+	queue := structures.NewQueue()
 	st.nodeKeys(st.root, queue, lo, hi)
 
 	for _, item := range queue.Slice() {
@@ -396,7 +398,7 @@ func (st *RedBlackBST) keys(lo, hi Key) (keys []Key) {
 	return
 }
 
-func (st *RedBlackBST) nodeKeys(x *RedBlackBSTNode, queue *Queue, lo, hi Key) {
+func (st *RedBlackBST) nodeKeys(x *RedBlackBSTNode, queue *structures.Queue, lo, hi Key) {
 
 	if x == nil {
 		return

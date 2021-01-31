@@ -1,19 +1,21 @@
 package algorithms
 
+import "../structures"
+
 // DepthFirstOrder ...
 type DepthFirstOrder struct {
 	marked      []bool
-	pre, post   *Queue
-	reversePost *Stack
+	pre, post   *structures.Queue
+	reversePost *structures.Stack
 }
 
 // NewDepthFirstOrder ...
 func NewDepthFirstOrder(g *Digraph) *DepthFirstOrder {
 	d := &DepthFirstOrder{
 		marked:      make([]bool, g.V()),
-		pre:         NewQueue(),
-		post:        NewQueue(),
-		reversePost: NewStack(),
+		pre:         structures.NewQueue(),
+		post:        structures.NewQueue(),
+		reversePost: structures.NewStack(),
 	}
 
 	for v := 0; v < g.V(); v++ {
@@ -45,16 +47,16 @@ func (d *DepthFirstOrder) Dfs(g *Digraph, v int) {
 }
 
 // Pre ...
-func (d *DepthFirstOrder) Pre() *Queue {
+func (d *DepthFirstOrder) Pre() *structures.Queue {
 	return d.pre
 }
 
 // Post ...
-func (d *DepthFirstOrder) Post() *Queue {
+func (d *DepthFirstOrder) Post() *structures.Queue {
 	return d.post
 }
 
 // ReversePost ...
-func (d *DepthFirstOrder) ReversePost() *Stack {
+func (d *DepthFirstOrder) ReversePost() *structures.Stack {
 	return d.reversePost
 }

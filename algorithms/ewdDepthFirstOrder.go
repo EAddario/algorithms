@@ -1,19 +1,21 @@
 package algorithms
 
+import "../structures"
+
 // DepthFirstOrder ...
 type EWDDepthFirstOrder struct {
 	marked      []bool
-	pre, post   *Queue
-	reversePost *Stack
+	pre, post   *structures.Queue
+	reversePost *structures.Stack
 }
 
 // NewDepthFirstOrder ...
 func NewEWDDepthFirstOrder(g *EdgeWeightedDigraph) *EWDDepthFirstOrder {
 	d := &EWDDepthFirstOrder{
 		marked:      make([]bool, g.V()),
-		pre:         NewQueue(),
-		post:        NewQueue(),
-		reversePost: NewStack(),
+		pre:         structures.NewQueue(),
+		post:        structures.NewQueue(),
+		reversePost: structures.NewStack(),
 	}
 
 	for v := 0; v < g.V(); v++ {
@@ -45,16 +47,22 @@ func (d *EWDDepthFirstOrder) Dfs(g *EdgeWeightedDigraph, v int) {
 }
 
 // Pre ...
-func (d *EWDDepthFirstOrder) Pre() *Queue {
+func (d *EWDDepthFirstOrder) Pre() *structures.Queue {
 	return d.pre
 }
 
 // Post ...
-func (d *EWDDepthFirstOrder) Post() *Queue {
+func (d *EWDDepthFirstOrder) Post() *structures.Queue {
 	return d.post
 }
 
 // ReversePost ...
-func (d *EWDDepthFirstOrder) ReversePost() *Stack {
-	return d.reversePost
+func (d *EWDDepthFirstOrder) ReversePost() *structures.Stack {
+	rp := structures.NewStack()
+
+	for !d.reversePost.IsEmpty() {
+		rp.Push(d.reversePost.Pop())
+	}
+
+	return rp
 }

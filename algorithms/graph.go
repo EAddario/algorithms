@@ -4,21 +4,22 @@ import (
 	"fmt"
 
 	"../stdin"
+	"../structures"
 )
 
 // Graph ...
 type Graph struct {
 	v, e int
-	adj  []*Bag
+	adj  []*structures.Bag
 }
 
 // NewGraph ...
 func NewGraph(in *stdin.In) *Graph {
 	v := in.ReadInt()
-	adj := make([]*Bag, v)
+	adj := make([]*structures.Bag, v)
 
 	for i := 0; i < v; i++ {
-		adj[i] = NewBag()
+		adj[i] = structures.NewBag()
 	}
 
 	g := &Graph{v: v, e: 0, adj: adj}
@@ -34,10 +35,10 @@ func NewGraph(in *stdin.In) *Graph {
 
 // NewGraphV ...
 func NewGraphV(v int) *Graph {
-	adj := make([]*Bag, v)
+	adj := make([]*structures.Bag, v)
 
 	for i := 0; i < v; i++ {
-		adj[i] = NewBag()
+		adj[i] = structures.NewBag()
 	}
 
 	return &Graph{v: v, e: 0, adj: adj}
