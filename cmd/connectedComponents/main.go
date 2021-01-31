@@ -31,6 +31,7 @@ import (
 
 	"../../algorithms"
 	"../../stdin"
+	"../../structures"
 )
 
 func main() {
@@ -43,10 +44,10 @@ func main() {
 	graph := algorithms.NewGraph(stdin.NewIn(os.Args[1], bufio.ScanWords))
 	cc := algorithms.NewCC(graph)
 	fmt.Println(cc.Count(), " components")
-	var components []*algorithms.Bag
+	var components []*structures.Bag
 
 	for i := 0; i < cc.Count(); i++ {
-		components = append(components, algorithms.NewBag())
+		components = append(components, structures.NewBag())
 	}
 
 	for v := 0; v < graph.V(); v++ {

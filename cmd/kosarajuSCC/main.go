@@ -41,6 +41,7 @@ import (
 
 	"../../algorithms"
 	"../../stdin"
+	"../../structures"
 )
 
 func main() {
@@ -54,10 +55,10 @@ func main() {
 	scc := algorithms.NewKosarajuSCC(g)
 	m := scc.Count()
 	fmt.Println(m, "strong components")
-	components := make([]*algorithms.Queue, m)
+	components := make([]*structures.Queue, m)
 
 	for i := 0; i < m; i++ {
-		components[i] = algorithms.NewQueue()
+		components[i] = structures.NewQueue()
 	}
 
 	for v := 0; v < g.V(); v++ {
