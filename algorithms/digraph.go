@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"../stdin"
+	"../structures"
 )
 
 // DigraphInterface ...
@@ -15,16 +16,16 @@ type DigraphInterface interface {
 // Digraph ...
 type Digraph struct {
 	v, e int
-	adj  []*Bag
+	adj  []*structures.Bag
 }
 
 // NewDigraph ...
 func NewDigraph(in *stdin.In) *Digraph {
 	v := in.ReadInt()
-	adj := make([]*Bag, v)
+	adj := make([]*structures.Bag, v)
 
 	for i := 0; i < v; i++ {
-		adj[i] = NewBag()
+		adj[i] = structures.NewBag()
 	}
 
 	g := &Digraph{v: v, e: 0, adj: adj}
@@ -40,10 +41,10 @@ func NewDigraph(in *stdin.In) *Digraph {
 
 // NewDigraphV ...
 func NewDigraphV(v int) *Digraph {
-	adj := make([]*Bag, v)
+	adj := make([]*structures.Bag, v)
 
 	for i := 0; i < v; i++ {
-		adj[i] = NewBag()
+		adj[i] = structures.NewBag()
 	}
 
 	return &Digraph{v: v, e: 0, adj: adj}

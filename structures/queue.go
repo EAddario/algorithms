@@ -1,12 +1,8 @@
-package algorithms
-
-import (
-	"../structures"
-)
+package structures
 
 // Queue ...
 type Queue struct {
-	first, last *structures.Node
+	first, last *Node
 	n           int
 }
 
@@ -22,7 +18,7 @@ func (q Queue) IsEmpty() bool {
 
 // Enqueue add  a new item into the queue
 func (q *Queue) Enqueue(item interface{}) {
-	node := structures.NewNode(item, nil)
+	node := NewNode(item, nil)
 	oldLast := q.last
 	q.last = node
 

@@ -1,10 +1,12 @@
 package algorithms
 
+import "../structures"
+
 // Cycle ...
 type Cycle struct {
 	marked []bool
 	edgeTo []int
-	cycle  *Stack
+	cycle  *structures.Stack
 }
 
 // NewCycle ...
@@ -40,7 +42,7 @@ func (c *Cycle) hasSelfLoop(g *Graph) bool {
 		for _, w := range g.Adj(v) {
 
 			if v == w {
-				c.cycle = NewStack()
+				c.cycle = structures.NewStack()
 				c.cycle.Push(v)
 				c.cycle.Push(w)
 				return true
@@ -62,7 +64,7 @@ func (c *Cycle) hasParallelEdges(g *Graph) bool {
 		for _, w := range g.Adj(v) {
 
 			if c.marked[w] {
-				c.cycle = NewStack()
+				c.cycle = structures.NewStack()
 				c.cycle.Push(v)
 				c.cycle.Push(w)
 				c.cycle.Push(v)
@@ -98,7 +100,7 @@ func (c *Cycle) Dfs(g *Graph, u, v int) {
 			c.edgeTo[w] = v
 			c.Dfs(g, v, w)
 		} else if w != u {
-			c.cycle = NewStack()
+			c.cycle = structures.NewStack()
 			for x := v; x != w; x = c.edgeTo[x] {
 				c.cycle.Push(x)
 			}
@@ -116,6 +118,6 @@ func (c *Cycle) HasCycle() bool {
 }
 
 // Cycle ...
-func (c *Cycle) Cycle() *Stack {
+func (c *Cycle) Cycle() *structures.Stack {
 	return c.cycle
 }

@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 // DepthFirstPaths ...
 type DepthFirstPaths struct {
 	marked []bool
@@ -39,7 +41,7 @@ func (s *DepthFirstPaths) PathTo(v int) []int {
 		return nil
 	}
 
-	path := NewStack()
+	path := structures.NewStack()
 
 	for x := v; x != s.s; x = s.edgeTo[x] {
 		path.Push(x)

@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 // NFA ...
 type NFA struct {
 	re string
@@ -12,7 +14,7 @@ func NewNFA(re string) *NFA {
 	m := len(re)
 	g := NewDigraphV(m + 1)
 	nfa := &NFA{re, g, m}
-	ops := NewStack()
+	ops := structures.NewStack()
 
 	for i := 0; i < m; i++ {
 		lp := i
@@ -49,7 +51,7 @@ func NewNFA(re string) *NFA {
 
 // Recognizes ...
 func (n *NFA) Recognizes(txt string) bool {
-	pc := NewBag()
+	pc := structures.NewBag()
 	dfs := NewDirectedDFS(n.g, 0)
 
 	for v := 0; v < n.g.V(); v++ {
@@ -61,7 +63,7 @@ func (n *NFA) Recognizes(txt string) bool {
 	}
 
 	for i := 0; i < len(txt); i++ {
-		match := NewBag()
+		match := structures.NewBag()
 
 		for _, v := range pc.IntSlice() {
 
@@ -75,7 +77,7 @@ func (n *NFA) Recognizes(txt string) bool {
 
 		}
 
-		pc = NewBag()
+		pc = structures.NewBag()
 		dfs = NewDirectedDFSSources(n.g, match.IntSlice())
 
 		for v := 0; v < n.g.V(); v++ {

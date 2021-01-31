@@ -32,8 +32,8 @@ import (
 	"fmt"
 	"os"
 
-	"../../algorithms"
 	"../../stdin"
+	"../../structures"
 )
 
 func main() {
@@ -45,7 +45,7 @@ func main() {
 
 	//words := stdin.ReadAllStrings()
 	words := stdin.NewIn(os.Args[1], bufio.ScanWords).ReadAllStrings()
-	queue := algorithms.NewQueue()
+	queue := structures.NewQueue()
 
 	for _, word := range words {
 		queue.Enqueue(word)

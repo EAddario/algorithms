@@ -4,21 +4,22 @@ import (
 	"fmt"
 
 	"../stdin"
+	"../structures"
 )
 
 // EdgeWeightedDigraph ...
 type EdgeWeightedDigraph struct {
 	v, e int
-	adj  []*Bag
+	adj  []*structures.Bag
 }
 
 // NewEdgeWeightedDigraph ...
 func NewEdgeWeightedDigraph(in *stdin.In) *EdgeWeightedDigraph {
 	v := in.ReadInt()
-	adj := make([]*Bag, v)
+	adj := make([]*structures.Bag, v)
 
 	for i := 0; i < v; i++ {
-		adj[i] = NewBag()
+		adj[i] = structures.NewBag()
 	}
 
 	g := &EdgeWeightedDigraph{v: v, e: 0, adj: adj}
@@ -34,10 +35,10 @@ func NewEdgeWeightedDigraph(in *stdin.In) *EdgeWeightedDigraph {
 
 // NewEdgeWeightedDigraphV ...
 func NewEdgeWeightedDigraphV(v int) *EdgeWeightedDigraph {
-	adj := make([]*Bag, v)
+	adj := make([]*structures.Bag, v)
 
 	for i := 0; i < v; i++ {
-		adj[i] = NewBag()
+		adj[i] = structures.NewBag()
 	}
 
 	return &EdgeWeightedDigraph{v: v, e: 0, adj: adj}

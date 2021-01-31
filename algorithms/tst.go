@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 type tstNode struct {
 	val              interface{}
 	c                byte
@@ -97,7 +99,7 @@ func (t *TST) put(x *tstNode, key string, val interface{}, d int) *tstNode {
 
 // Keys ...
 func (t *TST) Keys() (keys []string) {
-	queue := NewQueue()
+	queue := structures.NewQueue()
 	t.collect(t.root, "", queue)
 
 	for _, item := range queue.Slice() {
@@ -109,7 +111,7 @@ func (t *TST) Keys() (keys []string) {
 
 // KeysWithPrefix ...
 func (t *TST) KeysWithPrefix(prefix string) (keys []string) {
-	queue := NewQueue()
+	queue := structures.NewQueue()
 	x := t.get(t.root, prefix, 0)
 
 	if x == nil {
@@ -129,7 +131,7 @@ func (t *TST) KeysWithPrefix(prefix string) (keys []string) {
 	return
 }
 
-func (t *TST) collect(x *tstNode, prefix string, queue *Queue) {
+func (t *TST) collect(x *tstNode, prefix string, queue *structures.Queue) {
 
 	if x == nil {
 		return
@@ -148,7 +150,7 @@ func (t *TST) collect(x *tstNode, prefix string, queue *Queue) {
 
 // KeysThatMatch ...
 func (t *TST) KeysThatMatch(pat string) (keys []string) {
-	q := NewQueue()
+	q := structures.NewQueue()
 	t.collectMatch(t.root, "", 0, pat, q)
 
 	for _, item := range q.Slice() {
@@ -158,7 +160,7 @@ func (t *TST) KeysThatMatch(pat string) (keys []string) {
 	return
 }
 
-func (t *TST) collectMatch(x *tstNode, prefix string, i int, pattern string, queue *Queue) {
+func (t *TST) collectMatch(x *tstNode, prefix string, i int, pattern string, queue *structures.Queue) {
 
 	if x == nil {
 		return

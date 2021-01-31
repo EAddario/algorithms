@@ -1,15 +1,13 @@
-package algorithms
-
-import "../structures"
+package structures
 
 // Stack implements a stack by structures
 type Stack struct {
-	*structures.LinkList
+	*LinkList
 }
 
 // NewStack ...
 func NewStack() *Stack {
-	return &Stack{structures.NewLinkList()}
+	return &Stack{NewLinkList()}
 }
 
 // Push ...

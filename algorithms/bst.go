@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 // BSTNode ...
 type BSTNode struct {
 	key         Key // defined in st.go
@@ -289,7 +291,7 @@ func (st *BST) Keys() []Key {
 }
 
 func (st *BST) keys(lo, hi Key) (keys []Key) {
-	queue := NewQueue()
+	queue := structures.NewQueue()
 	st.nodeKeys(st.root, queue, lo, hi)
 
 	for _, item := range queue.Slice() {
@@ -299,7 +301,7 @@ func (st *BST) keys(lo, hi Key) (keys []Key) {
 	return
 }
 
-func (st *BST) nodeKeys(x *BSTNode, queue *Queue, lo, hi Key) {
+func (st *BST) nodeKeys(x *BSTNode, queue *structures.Queue, lo, hi Key) {
 
 	if x == nil {
 		return

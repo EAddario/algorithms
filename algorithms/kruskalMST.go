@@ -1,14 +1,16 @@
 package algorithms
 
+import "../structures"
+
 // KruskalMST ...
 type KruskalMST struct {
-	mst    *Queue
+	mst    *structures.Queue
 	weight float32
 }
 
 // NewKruskalMST ...
 func NewKruskalMST(g *EdgeWeightedGraph) *KruskalMST {
-	mst := NewQueue()
+	mst := structures.NewQueue()
 	k := &KruskalMST{mst, 0}
 	pq := NewMinPQ()
 

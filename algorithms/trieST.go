@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 const radix = 256
 
 type trieNode struct {
@@ -82,7 +84,7 @@ func (t *TrieST) Keys() []string {
 
 // KeysWithPrefix ...
 func (t *TrieST) KeysWithPrefix(pre string) (keys []string) {
-	q := NewQueue()
+	q := structures.NewQueue()
 	t.collect(t.get(t.root, pre, 0), pre, q)
 
 	for _, item := range q.StringSlice() {
@@ -92,7 +94,7 @@ func (t *TrieST) KeysWithPrefix(pre string) (keys []string) {
 	return
 }
 
-func (t *TrieST) collect(x *trieNode, pre string, q *Queue) {
+func (t *TrieST) collect(x *trieNode, pre string, q *structures.Queue) {
 
 	if x == nil {
 		return
@@ -110,7 +112,7 @@ func (t *TrieST) collect(x *trieNode, pre string, q *Queue) {
 
 // KeysThatMatch ...
 func (t *TrieST) KeysThatMatch(pat string) (keys []string) {
-	q := NewQueue()
+	q := structures.NewQueue()
 	t.collectMatch(t.root, "", pat, q)
 
 	for _, item := range q.StringSlice() {
@@ -120,7 +122,7 @@ func (t *TrieST) KeysThatMatch(pat string) (keys []string) {
 	return
 }
 
-func (t *TrieST) collectMatch(x *trieNode, pre, pat string, q *Queue) {
+func (t *TrieST) collectMatch(x *trieNode, pre, pat string, q *structures.Queue) {
 
 	if x == nil {
 		return

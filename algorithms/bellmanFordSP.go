@@ -1,11 +1,13 @@
 package algorithms
 
+import "../structures"
+
 // BellmanFordSP ...
 type BellmanFordSP struct {
 	distTo []float32
 	edgeTo []*DirectedEdge
 	onQ    []bool
-	queue  *Queue
+	queue  *structures.Queue
 	cost   int
 	cycle  []*DirectedEdge
 }
@@ -15,7 +17,7 @@ func NewBellmanFordSP(g *EdgeWeightedDigraph, s int) *BellmanFordSP {
 	edgeTo := make([]*DirectedEdge, g.V())
 	distTo := make([]float32, g.V())
 	onQ := make([]bool, g.V())
-	queue := NewQueue()
+	queue := structures.NewQueue()
 
 	for v := 0; v < g.V(); v++ {
 		distTo[v] = PositiveInfinity

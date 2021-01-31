@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"os"
 
-	"../../algorithms"
 	"../../stdin"
+	"../../structures"
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 	}
 
 	words := stdin.NewIn(os.Args[1], bufio.ScanWords).ReadAllStrings()
-	stack := algorithms.NewStack()
+	stack := structures.NewStack()
 
 	for _, word := range words {
 

@@ -1,5 +1,7 @@
 package algorithms
 
+import "../structures"
+
 // BreadFirstPaths ...
 type BreadFirstPaths struct {
 	marked []bool
@@ -17,7 +19,7 @@ func NewBreadFirstPaths(g *Graph, s int) *BreadFirstPaths {
 // Bfs ...
 func (s *BreadFirstPaths) Bfs(g *Graph, v int) {
 	s.marked[v] = true
-	queue := NewQueue()
+	queue := structures.NewQueue()
 	queue.Enqueue(v)
 
 	for !queue.IsEmpty() {
@@ -45,7 +47,7 @@ func (s *BreadFirstPaths) PathTo(v int) []int {
 		return nil
 	}
 
-	path := NewStack()
+	path := structures.NewStack()
 
 	for x := v; x != s.s; x = s.edgeTo[x] {
 		path.Push(x)

@@ -28,11 +28,12 @@
 package main
 
 import (
-	"../../algorithms"
-	"../../stdin"
 	"bufio"
 	"fmt"
 	"os"
+
+	"../../stdin"
+	"../../structures"
 )
 
 func main() {
@@ -43,7 +44,7 @@ func main() {
 	}
 
 	words := stdin.NewIn(os.Args[1], bufio.ScanWords).ReadAllStrings()
-	bag := algorithms.NewBag()
+	bag := structures.NewBag()
 
 	for _, word := range words {
 		bag.Add(word)

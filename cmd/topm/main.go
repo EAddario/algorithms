@@ -24,6 +24,7 @@ import (
 	"strconv"
 
 	"../../algorithms"
+	"../../structures"
 )
 
 func main() {
@@ -46,7 +47,7 @@ func main() {
 		}
 	}
 
-	s := algorithms.NewStack()
+	s := structures.NewStack()
 
 	for !pq.IsEmpty() {
 		s.Push(pq.DelMin())
