@@ -18,11 +18,11 @@ func main() {
 	}
 
 	graph := algorithms.NewEdgeWeightedDigraph(stdin.NewIn(os.Args[1], bufio.ScanWords))
-	fmt.Println("NewEdgeWeightedDigraph:", graph)
-
 	s, _ := strconv.Atoi(os.Args[2])
 	sp := algorithms.NewAcyclicSP(graph, s)
-	fmt.Println("Shortest path from s to each other vertex in DAG", sp)
+	lp := algorithms.NewAcyclicLP(graph, s)
+
+	fmt.Println("Shortest path")
 
 	for v := 0; v < graph.V(); v++ {
 
@@ -40,8 +40,7 @@ func main() {
 		}
 	}
 
-	lp := algorithms.NewAcyclicLP(graph, s)
-	fmt.Println("Longest path from s to each other vertex in DAG", lp)
+	fmt.Println("\nLongest path")
 
 	for v := 0; v < graph.V(); v++ {
 

@@ -29,19 +29,20 @@ func NewAcyclicSP(g *EdgeWeightedDigraph, s int) *AcyclicSP {
 	}
 
 	distTo[s] = 0.0
+	a := &AcyclicSP{distTo, edgeTo}
 	top := NewEWDTopological(g)
 
 	if !top.IsDAG() {
-		fmt.Println("Graph is not acyclic.")
+		fmt.Println("Digraph is not acyclic.")
 		os.Exit(0)
 	}
 
-	a := &AcyclicSP{distTo, edgeTo}
+	for _, v := range top.Order() {
 
-	fmt.Println("top:", top)
-	for _, e := range top.Order() {
-		fmt.Println("e:", e, "a:", a)
-		a.relax(e)
+		for _, e := range g.Adj(v) {
+			a.relax(e)
+		}
+
 	}
 
 	return a
