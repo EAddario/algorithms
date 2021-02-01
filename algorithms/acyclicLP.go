@@ -1,9 +1,14 @@
 //Computes the longest path tree from {@code s} to every other vertex in
-//the directed acyclic graph {@code G}.
+//the directed acyclic graph
 //G the acyclic digraph
 //s the source vertex
 
 package algorithms
+
+import (
+	"fmt"
+	"os"
+)
 
 // NegativeInfinity is a fake positive infinity value
 const NegativeInfinity = -999999.0
@@ -27,8 +32,17 @@ func NewAcyclicLP(g *EdgeWeightedDigraph, s int) *AcyclicLP {
 	a := &AcyclicLP{distTo, edgeTo}
 	top := NewEWDTopological(g)
 
-	for _, e := range top.Order() {
-		a.relax(e)
+	if !top.IsDAG() {
+		fmt.Println("Digraph is not acyclic.")
+		os.Exit(0)
+	}
+
+	for _, v := range top.Order() {
+
+		for _, e := range g.Adj(v) {
+			a.relax(e)
+		}
+
 	}
 
 	return a

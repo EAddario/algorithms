@@ -2,7 +2,7 @@ package algorithms
 
 // EWDTopological implements topological order for a edge weighted digraph
 type EWDTopological struct {
-	order []*DirectedEdge
+	order []int
 }
 
 // NewEWDTopological ...
@@ -12,10 +12,10 @@ func NewEWDTopological(g *EdgeWeightedDigraph) *EWDTopological {
 
 	if !cycleFinder.HasCycle() {
 		dfs := NewEWDDepthFirstOrder(g)
-		var order []*DirectedEdge
+		var order []int
 
 		for _, v := range dfs.ReversePost().Slice() {
-			order = append(order, v.(*DirectedEdge))
+			order = append(order, v.(int))
 		}
 
 		t.order = order
@@ -25,7 +25,7 @@ func NewEWDTopological(g *EdgeWeightedDigraph) *EWDTopological {
 }
 
 // Order ...
-func (t *EWDTopological) Order() []*DirectedEdge {
+func (t *EWDTopological) Order() []int {
 	return t.order
 }
 
