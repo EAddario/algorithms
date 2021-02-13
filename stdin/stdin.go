@@ -3,6 +3,7 @@ package stdin
 import (
 	"bufio"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -38,4 +39,22 @@ func ReadAllStrings() (words []string) {
 	}
 
 	return words
+}
+
+// ReadInt return next integer by delimiter of ' '
+func (s *StdIn) ReadInt() int {
+	s.scanner.Scan()
+	v, _ := strconv.Atoi(s.scanner.Text())
+	return v
+}
+
+// ReadAllInts returns all ints as an array
+func (s *StdIn) ReadAllInts() (vals []int) {
+
+	for s.scanner.Scan() {
+		v, _ := strconv.Atoi(s.scanner.Text())
+		vals = append(vals, v)
+	}
+
+	return vals
 }

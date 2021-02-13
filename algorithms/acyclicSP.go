@@ -8,6 +8,7 @@ package algorithms
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 // PositiveInfinity is a fake positive infinity value
@@ -23,6 +24,8 @@ type AcyclicSP struct {
 func NewAcyclicSP(g *EdgeWeightedDigraph, s int) *AcyclicSP {
 	edgeTo := make([]*DirectedEdge, g.V())
 	distTo := make([]float32, g.V())
+
+	validateVertex(len(distTo), s)
 
 	for v := 0; v < g.V(); v++ {
 		distTo[v] = PositiveInfinity
@@ -60,11 +63,13 @@ func (a *AcyclicSP) relax(e *DirectedEdge) {
 
 // DistTo ...
 func (a *AcyclicSP) DistTo(v int) float32 {
+	validateVertex(len(a.distTo), v)
 	return a.distTo[v]
 }
 
 // HasPathTo ...
 func (a *AcyclicSP) HasPathTo(v int) bool {
+	validateVertex(len(a.distTo), v)
 	return a.distTo[v] < PositiveInfinity
 }
 
@@ -81,4 +86,12 @@ func (a *AcyclicSP) PathTo(v int) (edges []*DirectedEdge) {
 	}
 
 	return
+}
+
+func validateVertex(v, w int) {
+
+	if w < 0 || w >= v {
+		panic("vertex " + strconv.Itoa(w) + " is not between 0 and " + strconv.Itoa(v - 1))
+	}
+
 }

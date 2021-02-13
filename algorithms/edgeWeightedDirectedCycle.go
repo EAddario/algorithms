@@ -27,7 +27,7 @@ func NewEdgeWeightedDirectedCycle(g *EdgeWeightedDigraph) *EdgeWeightedDirectedC
 	for v := 0; v < g.V(); v++ {
 
 		if !c.marked[v] {
-			c.Dfs(g, -1, v)
+			c.Dfs(g, v)
 		}
 
 	}
@@ -46,8 +46,35 @@ func (c *EdgeWeightedDirectedCycle) hasParallelEdges(g *EdgeWeightedDigraph) boo
 }
 
 // Dfs ...
-func (c *EdgeWeightedDirectedCycle) Dfs(g *EdgeWeightedDigraph, u, v int) {
-	return
+func (c *EdgeWeightedDirectedCycle) Dfs(g *EdgeWeightedDigraph, v int) {
+	c.onStack[v] = true
+	c.marked[v] = true
+
+	for _, e := range g.Adj(v) {
+		w := e.To()
+
+		if c.cycle != nil {
+			return
+		} else if !c.marked[w] {
+			c.edgeTo[w] = e.From()
+			c.Dfs(g, w)
+		} else if c.onStack[w] {
+			var cy []*DirectedEdge
+			f := e
+
+			for f.From() != w {
+				cy = append(cy, f)
+				f.w = f.From()
+			}
+
+			cy = append(cy, f)
+			c.cycle = cy
+			return
+		}
+
+	}
+
+	c.onStack[v] = false
 }
 
 // HasCycle ...
