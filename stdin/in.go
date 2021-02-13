@@ -67,6 +67,17 @@ func (in In) ReadInt() int {
 	return v
 }
 
+// ReadAllInts returns all ints as an array
+func (in In) ReadAllInts() (vals []int) {
+
+	for in.scanner.Scan() {
+		v, _ := strconv.Atoi(in.scanner.Text())
+		vals = append(vals, v)
+	}
+
+	return vals
+}
+
 // ReadFloat32 return next integer by delimiter of ' '
 func (in In) ReadFloat32() float32 {
 	in.scanner.Scan()
