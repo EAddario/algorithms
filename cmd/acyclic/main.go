@@ -30,7 +30,7 @@ func main() {
 		if sp.HasPathTo(v) {
 			fmt.Printf("%d to %d (%.2f)  ", s, v, sp.DistTo(v))
 
-			for _, e := range sp.PathTo (v) {
+			for _, e := range sp.PathTo(v) {
 				fmt.Print(e, "   ")
 			}
 
@@ -48,11 +48,11 @@ func main() {
 		if lp.HasPathTo(v) {
 			fmt.Printf("%d to %d (%.2f)  ", s, v, lp.DistTo(v))
 
-			for _, e := range lp.PathTo (v) {
+			for _, e := range lp.PathTo(v) {
 				fmt.Print(e, "   ")
 			}
 
-			fmt.Println();
+			fmt.Println()
 		} else {
 			fmt.Printf("%d to %d         no path\n", s, v)
 		}

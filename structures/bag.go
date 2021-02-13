@@ -1,6 +1,5 @@
 package structures
 
-
 // Bag implements a bag data type by structures
 type Bag struct {
 	*LinkList

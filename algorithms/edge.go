@@ -42,13 +42,13 @@ func (e *Edge) String() string {
 }
 
 // CompareTo implements PQItem interface
-func (e *Edge)CompareTo(other interface{})int{
+func (e *Edge) CompareTo(other interface{}) int {
 	ee := other.(*Edge)
 
 	if e.weight > ee.weight {
 		return 1
 	} else if e.weight < ee.weight {
-		return -1 
+		return -1
 	} else {
 		return 0
 	}
