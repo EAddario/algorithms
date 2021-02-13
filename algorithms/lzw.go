@@ -26,7 +26,7 @@ func (l *LZW) Compress() {
 	code := l.R + 1 // R is codeword for EOF
 
 	for len(input) > 0 {
-		s := st.LongPrefixOf(input)                      // Find max prefix match s.
+		s := st.LongPrefixOf(input)                            // Find max prefix match s.
 		_ = stdin.BinaryStdout.WriteBits(st.Get(s).(int), l.W) // Print s's encoding.
 		t := len(s)
 

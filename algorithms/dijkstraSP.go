@@ -33,7 +33,7 @@ func (d *DijkstraSP) relax(g *EdgeWeightedDigraph, v int) {
 	for _, e := range g.Adj(v) {
 		w := e.To()
 
-		if d.distTo[w] > d.distTo[v] + e.Weight() {
+		if d.distTo[w] > d.distTo[v]+e.Weight() {
 			d.distTo[w] = d.distTo[v] + e.Weight()
 			d.edgeTo[w] = e
 

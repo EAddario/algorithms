@@ -26,12 +26,12 @@ func (t Transaction) String() string {
 }
 
 // CompareTo implements PQItem interface
-func (t Transaction) CompareTo(other interface{})int{
+func (t Transaction) CompareTo(other interface{}) int {
 	tt := other.(Transaction)
 
-	if t.Amount > tt.Amount{
+	if t.Amount > tt.Amount {
 		return 1
-	} else if t.Amount < tt.Amount{
+	} else if t.Amount < tt.Amount {
 		return -1
 	} else {
 		return 0

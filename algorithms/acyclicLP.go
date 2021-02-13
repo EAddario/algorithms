@@ -38,7 +38,7 @@ func (a *AcyclicLP) relax(e *DirectedEdge) {
 	v := e.From()
 	w := e.To()
 
-	if a.distTo[w] < a.distTo[v] + e.Weight() {
+	if a.distTo[w] < a.distTo[v]+e.Weight() {
 		a.distTo[w] = a.distTo[v] + e.Weight()
 		a.edgeTo[w] = e
 	}

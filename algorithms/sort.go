@@ -14,11 +14,11 @@ type SortInterface interface {
 // StringSlice implements SortInterface
 type StringSlice []string
 
-func (p StringSlice) Len() int           { return len(p) }
+func (p StringSlice) Len() int { return len(p) }
 
 func (p StringSlice) Less(i, j int) bool { return p[i] < p[j] }
 
-func (p StringSlice) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+func (p StringSlice) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
 
 // IsSorted reports if the given items is sorted
 func IsSorted(items SortInterface) bool {

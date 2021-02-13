@@ -13,4 +13,3 @@ func InsertionSort(items SortInterface) {
 	}
 
 }
-

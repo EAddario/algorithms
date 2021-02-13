@@ -1,10 +1,10 @@
 /******************************************************************************
  *  Execution:    go run cmd/binaryDump/main.go n < file
  *  Data file:    https://introcs.cs.princeton.edu/stdlib/abra.txt
- *  
+ *
  *  Reads in a binary file and writes out the bits, n per line.
  *
- *  % more abra.txt 
+ *  % more abra.txt
  *  ABRACADABRA!
  *
  *  % go run cmd/binaryDump/main.go 16 < abra.txt
@@ -37,22 +37,22 @@ func main() {
 
 	bitsPerLine := 16
 
-	if len(os.Args) == 2{
+	if len(os.Args) == 2 {
 		bitsPerLine, _ = strconv.Atoi(os.Args[1])
 	}
 
 	var count int
 
-	for count=0;!stdin.BinaryStdin.IsEmpty();count++{
+	for count = 0; !stdin.BinaryStdin.IsEmpty(); count++ {
 
-		if bitsPerLine == 0{
+		if bitsPerLine == 0 {
 			stdin.BinaryStdin.ReadBool()
 			continue
-		} else if count != 0 && count  % bitsPerLine == 0 {
+		} else if count != 0 && count%bitsPerLine == 0 {
 			fmt.Println()
 		}
 
-		if stdin.BinaryStdin.ReadBool(){
+		if stdin.BinaryStdin.ReadBool() {
 			fmt.Print(1)
 		} else {
 			fmt.Print(0)

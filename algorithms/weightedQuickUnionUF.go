@@ -4,7 +4,7 @@ package algorithms
 type WeightedQuickUnionUF struct {
 	id    []int
 	n     int
-	size map[int]int
+	size  map[int]int
 	Count int
 }
 
@@ -30,7 +30,8 @@ func (uf *WeightedQuickUnionUF) Connected(p, q int) bool {
 // Find return the id of point p
 func (uf *WeightedQuickUnionUF) Find(p int) int {
 
-	for ;p!=uf.id[p];p=uf.id[p]{}
+	for ; p != uf.id[p]; p = uf.id[p] {
+	}
 
 	return p
 }
@@ -51,6 +52,6 @@ func (uf *WeightedQuickUnionUF) Union(p, q int) {
 		uf.id[pRoot] = qRoot
 		uf.size[qRoot] += uf.size[pRoot]
 	}
-	
+
 	uf.Count--
 }
