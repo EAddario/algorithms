@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"strings"
 
-	"../../algorithms"
+	"github.com/EAddario/algorithms/pkg/algorithms"
 )
 
 func main() {

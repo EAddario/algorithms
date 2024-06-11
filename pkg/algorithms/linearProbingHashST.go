@@ -1,6 +1,6 @@
 package algorithms
 
-import "../structures"
+import "github.com/EAddario/algorithms/pkg/structures"
 
 // LinearProbingHashST is symbol table
 type LinearProbingHashST struct {

@@ -3,7 +3,7 @@ package algorithms
 import (
 	"fmt"
 
-	"../stdin"
+	"github.com/EAddario/algorithms/pkg/stdin"
 )
 
 type huffmanNode struct {

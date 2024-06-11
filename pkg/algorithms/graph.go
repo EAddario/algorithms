@@ -3,24 +3,18 @@ package algorithms
 import (
 	"fmt"
 
-	"../stdin"
-	"../structures"
+	"github.com/EAddario/algorithms/pkg/stdin"
+	"github.com/EAddario/algorithms/pkg/structures"
 )
 
-// DigraphInterface ...
-type DigraphInterface interface {
-	V() int
-	Adj() []*DirectedEdge
-}
-
-// Digraph ...
-type Digraph struct {
+// Graph ...
+type Graph struct {
 	v, e int
 	adj  []*structures.Bag
 }
 
-// NewDigraph ...
-func NewDigraph(in *stdin.In) *Digraph {
+// NewGraph ...
+func NewGraph(in *stdin.In) *Graph {
 	v := in.ReadInt()
 	adj := make([]*structures.Bag, v)
 
@@ -28,7 +22,7 @@ func NewDigraph(in *stdin.In) *Digraph {
 		adj[i] = structures.NewBag()
 	}
 
-	g := &Digraph{v: v, e: 0, adj: adj}
+	g := &Graph{v: v, e: 0, adj: adj}
 	e := in.ReadInt()
 
 	for i := 0; i < e; i++ {
@@ -39,54 +33,40 @@ func NewDigraph(in *stdin.In) *Digraph {
 	return g
 }
 
-// NewDigraphV ...
-func NewDigraphV(v int) *Digraph {
+// NewGraphV ...
+func NewGraphV(v int) *Graph {
 	adj := make([]*structures.Bag, v)
 
 	for i := 0; i < v; i++ {
 		adj[i] = structures.NewBag()
 	}
 
-	return &Digraph{v: v, e: 0, adj: adj}
+	return &Graph{v: v, e: 0, adj: adj}
 }
 
 // V ...
-func (g *Digraph) V() int {
+func (g *Graph) V() int {
 	return g.v
 }
 
 // E ...
-func (g *Digraph) E() int {
+func (g *Graph) E() int {
 	return g.e
 }
 
 // AddEdge ...
-func (g *Digraph) AddEdge(v, w int) {
+func (g *Graph) AddEdge(v, w int) {
 	g.adj[v].Add(w)
+	g.adj[w].Add(v)
 	g.e++
 }
 
 // Adj ...
-func (g *Digraph) Adj(v int) []int {
+func (g *Graph) Adj(v int) []int {
 	return g.adj[v].IntSlice()
 }
 
-// Reverse ...
-func (g *Digraph) Reverse() *Digraph {
-	r := NewDigraphV(g.v)
-
-	for v := 0; v < g.v; v++ {
-
-		for _, w := range g.Adj(v) {
-			r.AddEdge(w, v)
-		}
-
-	}
-
-	return r
-}
-
-func (g *Digraph) String() string {
+func (g *Graph) String() string {
 	s := fmt.Sprintf("%d vertices, %d edges\n", g.v, g.e)
 
 	for i := 0; i < g.v; i++ {

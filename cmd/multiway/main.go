@@ -28,8 +28,8 @@ import (
 	"fmt"
 	"os"
 
-	"../../algorithms"
-	"../../stdin"
+	"github.com/EAddario/algorithms/pkg/algorithms"
+	"github.com/EAddario/algorithms/pkg/stdin"
 )
 
 type StringPQItem string

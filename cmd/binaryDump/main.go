@@ -25,7 +25,7 @@ import (
 	"os"
 	"strconv"
 
-	"../../stdin"
+	"github.com/EAddario/algorithms/pkg/stdin"
 )
 
 func main() {

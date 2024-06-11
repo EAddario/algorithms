@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"strings"
 
-	"../stdin"
+	"github.com/EAddario/algorithms/pkg/stdin"
 )
 
 // SymbolDigraph ...

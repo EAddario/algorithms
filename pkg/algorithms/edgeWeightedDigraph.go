@@ -3,8 +3,8 @@ package algorithms
 import (
 	"fmt"
 
-	"../stdin"
-	"../structures"
+	"github.com/EAddario/algorithms/pkg/stdin"
+	"github.com/EAddario/algorithms/pkg/structures"
 )
 
 // EdgeWeightedDigraph ...

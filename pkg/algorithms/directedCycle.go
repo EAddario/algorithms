@@ -1,19 +1,21 @@
 package algorithms
 
-import "../structures"
+import "github.com/EAddario/algorithms/pkg/structures"
 
-// Cycle ...
-type Cycle struct {
-	marked []bool
-	edgeTo []int
-	cycle  *structures.Stack
+// DirectedCycle ...
+type DirectedCycle struct {
+	marked  []bool
+	edgeTo  []int
+	cycle   *structures.Stack
+	onStack []bool
 }
 
-// NewCycle ...
-func NewCycle(g *Graph) *Cycle {
+// NewDirectedCycle ...
+func NewDirectedCycle(g *Digraph) *DirectedCycle {
 	marked := make([]bool, g.V())
 	edgeTo := make([]int, g.V())
-	c := &Cycle{marked: marked, edgeTo: edgeTo}
+	onStack := make([]bool, g.V())
+	c := &DirectedCycle{marked: marked, edgeTo: edgeTo, onStack: onStack}
 
 	if c.hasSelfLoop(g) {
 		return c
@@ -35,7 +37,7 @@ func NewCycle(g *Graph) *Cycle {
 }
 
 // hasSelfLoop ...
-func (c *Cycle) hasSelfLoop(g *Graph) bool {
+func (c *DirectedCycle) hasSelfLoop(g *Digraph) bool {
 
 	for v := 0; v < g.V(); v++ {
 
@@ -56,7 +58,7 @@ func (c *Cycle) hasSelfLoop(g *Graph) bool {
 }
 
 // hasParallelEdges ...
-func (c *Cycle) hasParallelEdges(g *Graph) bool {
+func (c *DirectedCycle) hasParallelEdges(g *Digraph) bool {
 	c.marked = make([]bool, g.V())
 
 	for v := 0; v < g.V(); v++ {
@@ -86,20 +88,21 @@ func (c *Cycle) hasParallelEdges(g *Graph) bool {
 }
 
 // Dfs ...
-func (c *Cycle) Dfs(g *Graph, u, v int) {
+func (c *DirectedCycle) Dfs(g *Digraph, u, v int) {
 	c.marked[v] = true
+	c.onStack[v] = true
 
 	for _, w := range g.Adj(v) {
 
 		// short circuit if cycle already found
-		if c.cycle != nil {
+		if c.HasCycle() {
 			return
 		}
 
 		if !c.marked[w] {
 			c.edgeTo[w] = v
 			c.Dfs(g, v, w)
-		} else if w != u {
+		} else if c.onStack[w] {
 			c.cycle = structures.NewStack()
 			for x := v; x != w; x = c.edgeTo[x] {
 				c.cycle.Push(x)
@@ -110,14 +113,15 @@ func (c *Cycle) Dfs(g *Graph, u, v int) {
 
 	}
 
+	c.onStack[v] = false
 }
 
 // HasCycle ...
-func (c *Cycle) HasCycle() bool {
+func (c *DirectedCycle) HasCycle() bool {
 	return c.cycle != nil
 }
 
 // Cycle ...
-func (c *Cycle) Cycle() *structures.Stack {
+func (c *DirectedCycle) Cycle() *structures.Stack {
 	return c.cycle
 }

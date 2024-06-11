@@ -23,8 +23,8 @@ import (
 	"os"
 	"strconv"
 
-	"../../algorithms"
-	"../../structures"
+	"github.com/EAddario/algorithms/pkg/algorithms"
+	"github.com/EAddario/algorithms/pkg/structures"
 )
 
 func main() {

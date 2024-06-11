@@ -1,6 +1,6 @@
 package algorithms
 
-import "../structures"
+import "github.com/EAddario/algorithms/pkg/structures"
 
 // BreadFirstPaths ...
 type BreadFirstPaths struct {

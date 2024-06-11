@@ -1,6 +1,6 @@
 package algorithms
 
-import "../stdin"
+import "github.com/EAddario/algorithms/pkg/stdin"
 
 // LZW ...
 type LZW struct {

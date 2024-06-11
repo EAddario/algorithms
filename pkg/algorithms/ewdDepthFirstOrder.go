@@ -1,17 +1,17 @@
 package algorithms
 
-import "../structures"
+import "github.com/EAddario/algorithms/pkg/structures"
 
 // DepthFirstOrder ...
-type DepthFirstOrder struct {
+type EWDDepthFirstOrder struct {
 	marked      []bool
 	pre, post   *structures.Queue
 	reversePost *structures.Stack
 }
 
 // NewDepthFirstOrder ...
-func NewDepthFirstOrder(g *Digraph) *DepthFirstOrder {
-	d := &DepthFirstOrder{
+func NewEWDDepthFirstOrder(g *EdgeWeightedDigraph) *EWDDepthFirstOrder {
+	d := &EWDDepthFirstOrder{
 		marked:      make([]bool, g.V()),
 		pre:         structures.NewQueue(),
 		post:        structures.NewQueue(),
@@ -30,14 +30,14 @@ func NewDepthFirstOrder(g *Digraph) *DepthFirstOrder {
 }
 
 // Dfs ...
-func (d *DepthFirstOrder) Dfs(g *Digraph, v int) {
+func (d *EWDDepthFirstOrder) Dfs(g *EdgeWeightedDigraph, v int) {
 	d.pre.Enqueue(v)
 	d.marked[v] = true
 
 	for _, w := range g.Adj(v) {
 
-		if !d.marked[w] {
-			d.Dfs(g, w)
+		if !d.marked[w.w] {
+			d.Dfs(g, w.w)
 		}
 
 	}
@@ -47,16 +47,22 @@ func (d *DepthFirstOrder) Dfs(g *Digraph, v int) {
 }
 
 // Pre ...
-func (d *DepthFirstOrder) Pre() *structures.Queue {
+func (d *EWDDepthFirstOrder) Pre() *structures.Queue {
 	return d.pre
 }
 
 // Post ...
-func (d *DepthFirstOrder) Post() *structures.Queue {
+func (d *EWDDepthFirstOrder) Post() *structures.Queue {
 	return d.post
 }
 
 // ReversePost ...
-func (d *DepthFirstOrder) ReversePost() *structures.Stack {
-	return d.reversePost
+func (d *EWDDepthFirstOrder) ReversePost() *structures.Stack {
+	rp := structures.NewStack()
+
+	for !d.reversePost.IsEmpty() {
+		rp.Push(d.reversePost.Pop())
+	}
+
+	return rp
 }

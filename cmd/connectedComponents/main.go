@@ -29,9 +29,9 @@ import (
 	"fmt"
 	"os"
 
-	"../../algorithms"
-	"../../stdin"
-	"../../structures"
+	"github.com/EAddario/algorithms/pkg/algorithms"
+	"github.com/EAddario/algorithms/pkg/stdin"
+	"github.com/EAddario/algorithms/pkg/structures"
 )
 
 func main() {

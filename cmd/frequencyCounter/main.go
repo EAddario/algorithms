@@ -30,8 +30,8 @@ import (
 	"os"
 	"strconv"
 
-	"../../algorithms"
-	"../../stdin"
+	"github.com/EAddario/algorithms/pkg/algorithms"
+	"github.com/EAddario/algorithms/pkg/stdin"
 )
 
 func main() {

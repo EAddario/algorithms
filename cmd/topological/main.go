@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"os"
 
-	"../../algorithms"
+	"github.com/EAddario/algorithms/pkg/algorithms"
 )
 
 func main() {
