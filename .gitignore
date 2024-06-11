@@ -352,6 +352,7 @@ modules.order
 # ---------------
 
 vendor/
+!go.mod
 go.work
 
 # -------------
